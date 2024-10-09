@@ -8,11 +8,14 @@ exports.create = (req, res) => {
 
     try {
         // Creando objeto Book a partir de los datos de la solicitud
-        book.bookname = req.body.bookname;
-        book.description = req.body.description;
-        book.pages = req.body.pages;
-        book.author = req.body.author;
-        book.copyrightby = req.body.copyrightby;
+        book.titulo = req.body.titulo;
+        book.autor = req.body.autor;
+        book.isbn = req.body.isbn;
+        book.editorial = req.body.editorial;
+        book.anio_publicacion = req.body.anio_publicacion;
+        book.categoria = req.body.categoria;
+        book.cantidad_disponible = req.body.cantidad_disponible;
+        book.ubicacion = req.body.ubicacion;
 
         // Guardar en la base de datos MySQL
         Book.create(book).then(result => {
@@ -83,11 +86,14 @@ exports.updateById = async (req, res) => {
             });
         } else {
             let updatedObject = {
-                bookname: req.body.bookname,
-                description: req.body.description,
-                pages: req.body.pages,
-                author: req.body.author,
-                copyrightby: req.body.copyrightby
+                titulo: req.body.titulo,
+                autor: req.body.autor,
+                isbn: req.body.isbn,
+                editorial: req.body.editorial,
+                anio_publicacion: req.body.anio_publicacion,
+                categoria: req.body.categoria,
+                cantidad_disponible: req.body.cantidad_disponible,
+                ubicacion: req.body.ubicacion
             }
 
             let result = await Book.update(updatedObject, { returning: true, where: { id_book: bookId } });
