@@ -4,18 +4,20 @@ const db = require('../config/db.config.js');
 const Book = db.Book;
 
 exports.create = (req, res) => {
+    console.log(req.body); // Imprimir el cuerpo de la solicitud para depurar
+
     let book = {};
 
     try {
         // Creando objeto Book a partir de los datos de la solicitud
-        book.titulo = req.body.titulo;
-        book.autor = req.body.autor;
-        book.isbn = req.body.isbn;
-        book.editorial = req.body.editorial;
-        book.anio_publicacion = req.body.anio_publicacion;
-        book.categoria = req.body.categoria;
-        book.cantidad_disponible = req.body.cantidad_disponible;
-        book.ubicacion = req.body.ubicacion;
+        book.titulo = req.body.titulo;  // Asegúrate de que estás usando 'titulo'
+        book.autor = req.body.autor;      // Asegúrate de que estás usando 'autor'
+        book.isbn = req.body.isbn;        // Asegúrate de que estás usando 'isbn'
+        book.editorial = req.body.editorial;  // Asegúrate de que estás usando 'editorial'
+        book.anio_publicacion = req.body.anio_publicacion;  // Asegúrate de que estás usando 'anio_publicacion'
+        book.categoria = req.body.categoria;  // Asegúrate de que estás usando 'categoria'
+        book.cantidad_disponible = req.body.cantidad_disponible;  // Asegúrate de que estás usando 'cantidad_disponible'
+        book.ubicacion = req.body.ubicacion;  // Asegúrate de que estás usando 'ubicacion'
 
         // Guardar en la base de datos MySQL
         Book.create(book).then(result => {
